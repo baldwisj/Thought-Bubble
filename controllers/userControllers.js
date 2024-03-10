@@ -2,7 +2,7 @@ const { Users, Thoughts } = require('../models');
 
 module.exports = {
     //The following retreives users
-    async getUsers(req, res) {
+    async getAllUsers(req, res) {
         try {
             const user = await Users.find()
                 .populate("thoughts")
@@ -14,7 +14,7 @@ module.exports = {
     },
 
     //The following retreives one user by id
-    async getSingleUser(req, res) {
+    async getUserById(req, res) {
         try {
             const user = await Users.findOne({ _id: req.params.userId })
                 .populate("thoughts")
