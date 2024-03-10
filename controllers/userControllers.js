@@ -45,6 +45,7 @@ module.exports = {
             const user = await Users.findOneAndUpdate(
                 { _id: req.params.userId },
                 { $set: req.body },
+                { runValidators: true, new: true }
             );
 
 
@@ -80,6 +81,7 @@ module.exports = {
             const user = await Users.findOneAndUpdate(
                 { _id: req.params.userId },
                 { $addToSet: { friends: req.body.friendId } },
+                { runValidators: true, new: true }
             );
 
             if (!user) {
@@ -97,6 +99,7 @@ module.exports = {
             const user = await Users.findOneAndUpdate(
                 { _id: req.params.userId },
                 { $pull: { friends: req.params.friendId } },
+                { runValidators: true, new: true }
             );
 
             if (!user) {
